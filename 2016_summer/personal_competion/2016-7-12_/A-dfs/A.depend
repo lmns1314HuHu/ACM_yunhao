@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1468375768 source:c:\users\日天\desktop\acm_yunhao\2016暑假集训\个人排位\2016-7-12\a\main.cpp
+	<iostream>
+	<cstdio>
+	<cstring>
+	<algorithm>
+
+1468387123 source:c:\users\日天\desktop\acm_yunhao\2016暑假集训\个人排位\2016-7-12\a-dfs\main.cpp
+	<iostream>
+	<cstdio>
+	<cstring>
+	<algorithm>
+
