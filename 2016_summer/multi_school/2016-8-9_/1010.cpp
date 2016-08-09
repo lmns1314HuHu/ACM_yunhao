@@ -40,12 +40,10 @@ int main()
         printf("Case #%d:\n", clk++);
         for (int i = 0; i < n; i++){
             scanf("%s", st);
-            //cout << "st = " << st << endl;
 
             if(strcmp(st, "push") == 0){
                 getchar();
                 scanf("%c %d", &ch, &num);
-                //cout << "ch = " << ch << endl;
 
                 if(ch == 'A'){
                     stk[curstk++] = num;
@@ -61,7 +59,6 @@ int main()
             else if(strcmp(st, "pop") == 0){
                 getchar();
                 scanf("%c", &ch);
-                //cout << "ch = " << ch << endl;
 
                 if(ch == 'A'){
                     visit[A[curA-1]] = true;
@@ -112,7 +109,6 @@ int main()
                 getchar();
                 char ch2;
                 scanf("%c %c", &ch, &ch2);
-                //cout << "c = " << ch << " = " << ch2 << endl;
 
                 if(ch == 'A'){
                     curA = 0;
