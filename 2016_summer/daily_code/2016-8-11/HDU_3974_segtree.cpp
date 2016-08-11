@@ -14,11 +14,12 @@ int minv[maxn<<2];
 
 void build(int o, int l, int r){
     int m = (l+r)>>1;
-    if(l == r){
-        minv[o] = 
-    }
-    build(o<<1, l, m);
-    build(o<<1|1, m+1, r);
+    if(l == r) scanf("%d", &minv[o]);
+	else{
+		build(o<<1, l, m);
+		build(o<<1|1, m+1, r);
+		minv[o] = min(minv[o<<1], minv[o<<1|1]);
+	}
 }
 
 int query(int o, int l, int r){
