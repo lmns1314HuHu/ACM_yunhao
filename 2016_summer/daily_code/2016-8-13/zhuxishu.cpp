@@ -65,18 +65,12 @@ int main()
         int r = unique(t, t+n)-t;
         //Ro[0] = build(0, r-1);
         for (i = 0; i < n; i++){
-            cout << lower_bound(t, t+r, v[i]) - t << " ";
-            //Ro[i+1] = update(0, r-1, lower_bound(t, t+r, v[i]) - t, Ro[i]);
+            // cout << lower_bound(t, t+r, v[i]) - t << " ";
+            Ro[i+1] = update(0, r-1, lower_bound(t, t+r, v[i]) - t, Ro[i]);
         }
-        cout << endl;
-        sort(v, v+n);
-        for (i = 0; i < n; i++){
-            cout << v[i] << " ";
-        }
-        cout << endl;
         while(m--){
             scanf("%d%d%d", &L, &R, &d);
-            //printf("%d\n", t[query(Ro[R], Ro[L-1], d, 0, r-1)]);
+            printf("%d\n", t[query(Ro[R], Ro[L-1], d, 0, r-1)]);
         }
     }
     return 0;
