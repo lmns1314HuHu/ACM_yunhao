@@ -13,24 +13,25 @@ typedef long long ll;
 
 int n, m;
 int a, b, c;
+
 int num[maxn], numcpy[maxn];
 int sum[maxn<<5], lc[maxn<<5], rc[maxn<<5], val[maxn<<5];
-int tr[maxm], tot, trcnt;
+int tr[maxn], tot, trcnt;
 
 void init(){
     tot = 0;
     trcnt = 0;
     memset(lc, -1, sizeof lc);
     memset(rc, -1, sizeof rc);
-	memset(val, -1, sizeof val);
+	// memset(val, -1, sizeof val);
 }
 
 void maintain(int o, int l, int r){
     int mid = (l+r)>>1;
     sum[o] = sum[lc[o]] + sum[rc[o]];
-	val[o] = val[rc[o]];
-	if(val[o] == -1)
-		val[o] = val[lc[o]];
+	// val[o] = val[rc[o]];
+	// if(val[o] == -1)
+		// val[o] = val[lc[o]];
 }
 
 void build(int o, int l, int r){
@@ -55,7 +56,7 @@ void update(int o, int l, int r, int ltree){
     int mid = (l+r)>>1;
     if(l == r){
         sum[o]++;
-        val[o] = q;
+        // val[o] = q;
     }
     else{
         if(p <= mid){
@@ -63,7 +64,7 @@ void update(int o, int l, int r, int ltree){
             rc[o] = rc[ltree];
             update(lc[o], l, mid, lc[ltree]);
         }
-        if(p > mid){
+        else {
             lc[o] = lc[ltree];
             rc[o] = tot++;
             update(rc[o], mid+1, r, rc[ltree]);
@@ -89,7 +90,7 @@ int query(int o, int l, int r, int ltree, int rk){
     if(l == r){
         //rk -= tmp;
 		// cout << "bian jie return\n";
-        return val[o];
+        return l;
     }
     else{
 		int tmp = sum[lc[o]] - sum[lc[ltree]];
@@ -123,21 +124,22 @@ int main()
 {
     while(~scanf("%d%d", &n, &m)){
 		init();
-		build_tree(1, n);
 		for (int i = 0; i < n; i++)
 			scanf("%d", &num[i]);
 		memcpy(numcpy, num, sizeof(num));
 		sort(numcpy, numcpy + n);
 		int len = unique(numcpy, numcpy + n) - numcpy;
+		
+		build_tree(1, len);
 		for (int i = 0; i < n; i++){
 			q = i, p = lower_bound(numcpy, numcpy+len, num[i]) - numcpy;
 			p++;
-			update_tree(1, n);
+			update_tree(1, len);
 		}
 		for (int i = 0; i < m; i++){
 			scanf("%d%d%d", &a, &b, &c);
 			y1 = a, y2 = b;
-			printf("%d\n", num[query_tree(1, n, c)]);
+			printf("%d\n", numcpy[query_tree(1, len, c)-1]);
 		}
 	}
     return 0;
