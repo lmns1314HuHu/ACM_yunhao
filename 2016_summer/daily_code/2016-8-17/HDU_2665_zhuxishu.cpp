@@ -10,6 +10,6 @@ typedef long long ll;
 
 int main()
 {
-    
+    int i = 0;
     return 0;
 }
